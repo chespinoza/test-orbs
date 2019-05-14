@@ -17,8 +17,16 @@ jobs:
     steps:
       - trying/say_hello:
           to: "Christian"
+  
+  second_job:
+    docker:
+      - image: circleci/python:3.6.6-stretch
+    steps:
+      - trying/say_hello:
+          to: "All"
 
 workflows:
   workflow:
       jobs:
         - first_job
+        - second_job
