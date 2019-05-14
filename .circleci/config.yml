@@ -1,0 +1,24 @@
+version: 2.1
+
+orbs:
+  trying:
+    commands:
+      say_hello:
+        parameters:
+          to:
+            type: string
+        steps:
+          - run: echo "Hi <<parameters.to>>"
+
+jobs:
+  first_job:
+    docker:
+      - image: circleci/python:3.7.1-stretch
+    steps:
+      - trying/say_hello:
+          to: "Christian"
+
+workflows:
+  workflow:
+      jobs:
+        - first_job
